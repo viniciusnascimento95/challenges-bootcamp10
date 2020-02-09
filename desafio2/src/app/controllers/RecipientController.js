@@ -5,13 +5,13 @@ import User from '../models/User';
 class RecipientController {
   async store(req, res) {
     const schema = Yup.object().shape({
-      nome: Yup.string().required(),
-      rua: Yup.string().required(),
-      numero: Yup.string().required(),
-      complemento: Yup.string(),
-      estado: Yup.string().required(),
-      cidade: Yup.string().required(),
-      cep: Yup.string().required(),
+      name: Yup.string().required(),
+      Street: Yup.string().required(),
+      number: Yup.string().required(),
+      complement: Yup.number().notRequired(),
+      state: Yup.string().required(),
+      city: Yup.string().required(),
+      zipcode: Yup.string().required(),
     });
 
     // Checa se todos os campos estão preenchidos
@@ -34,24 +34,24 @@ class RecipientController {
 
     const {
       id,
-      nome,
-      rua,
-      numero,
-      complemento,
-      estado,
-      cidade,
-      cep,
+      name,
+      street,
+      number,
+      complement,
+      state,
+      city,
+      zipcode,
     } = await Recipient.create(req.body);
 
     return res.json({
       id,
-      nome,
-      rua,
-      numero,
-      complemento,
-      estado,
-      cidade,
-      cep,
+      name,
+      street,
+      number,
+      complement,
+      state,
+      city,
+      zipcode,
     });
   }
 
@@ -59,13 +59,13 @@ class RecipientController {
     // console.log(req.userId);
 
     const schema = Yup.object().shape({
-      nome: Yup.string().required(),
-      rua: Yup.string().required(),
-      numero: Yup.string().required(),
-      complemento: Yup.string(),
-      estado: Yup.string().required(),
-      cidade: Yup.string().required(),
-      cep: Yup.string().required(),
+      name: Yup.string(),
+      Street: Yup.string(),
+      number: Yup.string(),
+      complement: Yup.number(),
+      state: Yup.string(),
+      city: Yup.string(),
+      zipcode: Yup.string(),
     });
 
     if (!(await schema.isValid(req.body))) {
@@ -76,24 +76,24 @@ class RecipientController {
 
     const {
       id,
-      nome,
-      rua,
-      numero,
-      complemento,
-      estado,
-      cidade,
-      cep,
+      name,
+      street,
+      number,
+      complement,
+      state,
+      city,
+      zipcode,
     } = await recipient.update(req.body);
 
     return res.json({
       id,
-      nome,
-      rua,
-      numero,
-      complemento,
-      estado,
-      cidade,
-      cep,
+      name,
+      street,
+      number,
+      complement,
+      state,
+      city,
+      zipcode,
     });
   }
 }
