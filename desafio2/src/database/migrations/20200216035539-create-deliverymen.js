@@ -1,6 +1,6 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('recipients', {
+    return queryInterface.createTable('deliverymen', {
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -11,25 +11,17 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      street: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      number: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      complement: {
-        type: Sequelize.STRING,
+      avatar_id: {
+        type: Sequelize.INTEGER,
+        references: { model: 'files', key: 'id' },
+        onUpdate: 'CASCADE',
+        onDelete: 'SET NULL',
         allowNull: true,
       },
-      state: {
+      email: {
         type: Sequelize.STRING,
         allowNull: false,
-      },
-      city: {
-        type: Sequelize.STRING,
-        allowNull: false,
+        unique: true,
       },
       created_at: {
         type: Sequelize.DATE,
@@ -43,6 +35,6 @@ module.exports = {
   },
 
   down: queryInterface => {
-    return queryInterface.dropTable('recipient');
+    return queryInterface.dropTable('deliverymen');
   },
 };
