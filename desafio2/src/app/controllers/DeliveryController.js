@@ -4,7 +4,9 @@ import Recipient from '../models/Recipient';
 import Deliveryman from '../models/Deliveryman';
 import File from '../models/File';
 import DetailMail from '../jobs/DetailMail';
-import Queue from '../../lib/Queue';
+import Queue from '../lib/Queue';
+
+// Controller para fazer a gestão de encomendas
 
 class DeliveryController {
   async index(req, res) {

@@ -1,10 +1,6 @@
 import * as Yup from 'yup';
-
 import jwt from 'jsonwebtoken';
-
-// eslint-disable-next-line import/no-unresolved
 import authConfig from '../../config/auth';
-
 import User from '../models/User';
 
 class SessionController {
